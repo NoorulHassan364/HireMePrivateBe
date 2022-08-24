@@ -26,5 +26,6 @@ Router.get("/getFavorites/:_id", userController.getFavorites);
 Router.get("/getBestMatch/:service", userController.getBestMatch);
 Router.patch("/addView/:_id", userController.addView);
 Router.get(`/getView/:_id`, userController.getView);
+Router.patch("/postReview/:_id", userController.postReview);
 
 module.exports = Router;

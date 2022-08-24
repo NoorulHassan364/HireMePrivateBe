@@ -68,6 +68,7 @@ const userSchema = new mongoose.Schema({
   favoriteJobs: [{ type: mongoose.Types.ObjectId, ref: "Job", default: [] }],
   viewed: [{ type: mongoose.Types.ObjectId, ref: "User", default: [] }],
   emergencyCase: { type: Boolean },
+  reviews: [{ type: Object }],
 
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now },

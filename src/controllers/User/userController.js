@@ -430,6 +430,33 @@ class Users {
       });
     }
   };
+
+  postReview = async (req, res) => {
+    try {
+      console.log(req.body, req.params);
+      const { _id } = req.params;
+      const { review, rating, name } = req.body;
+      const data = await User.findByIdAndUpdate(
+        _id,
+        {
+          $push: { reviews: { review: review, rating: rating, name } },
+        },
+        { new: true }
+      );
+      console.log(data);
+      if (data) {
+        res
+          ?.status(200)
+          .json({ data: data, message: "review add successfully" });
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        status: "error",
+        message: "server error",
+      });
+    }
+  };
 }
 
 module.exports = new Users();
